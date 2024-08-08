@@ -19,7 +19,7 @@ export class PasswordStrengthComponent {
     } else if (this.password.length < 8) {
       this.strengthClass = ["red", "red", "red"];
     } else {
-      const hasLetters = /[a-zA-Z]/.test(this.password);
+      const hasLetters = /[a-zA-Zа-яА-Я]/.test(this.password);
       const hasDigits = /\d/.test(this.password);
       const hasSymbols = /[!@#$%^&*(),.?":{}|<>]/.test(this.password);
 
