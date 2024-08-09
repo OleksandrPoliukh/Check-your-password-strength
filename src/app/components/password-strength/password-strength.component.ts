@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-password-strength',
-  templateUrl: './password-strength.component.html',
-  styleUrl: './password-strength.component.css'
+    selector: 'app-password-strength',
+    templateUrl: './password-strength.component.html',
+    styleUrl: './password-strength.component.css',
+    standalone: true,
+    imports: [FormsModule, NgClass]
 })
 export class PasswordStrengthComponent {
   password: string = "";
