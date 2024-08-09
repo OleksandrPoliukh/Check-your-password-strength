@@ -1,3 +1,4 @@
 <app-header></app-header>
-<app-password-strength></app-password-strength>
+<app-password-input (passwordChange)="password = $event"></app-password-input>
+<app-password-strength-indicator [password]="password"></app-password-strength-indicator>
 <app-description></app-description>
