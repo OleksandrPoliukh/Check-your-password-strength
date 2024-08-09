@@ -1,19 +1,22 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { CheckPassStrengthService } from '../../services/check-pass-strength.service';
 
 @Component({
   selector: 'app-password-input',
   standalone: true,
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './password-input.component.html',
   styleUrls: ['./password-input.component.css']
 })
+
 export class PasswordInputComponent {
-  password: string = '';
 
-  @Output() passwordChange = new EventEmitter<string>();
+  password = new FormControl('');
 
-  onPasswordInput() {
-    this.passwordChange.emit(this.password);
+  constructor(private checkPassStrengthService: CheckPassStrengthService) {
+    this.password.valueChanges.subscribe(value => {
+      this.checkPassStrengthService.checkPassStrength(value || "");
+    });
   }
 }

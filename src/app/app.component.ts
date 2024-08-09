@@ -12,6 +12,5 @@ import { PasswordStrengthIndicatorComponent } from './components/password-streng
     imports: [HeaderComponent, DescriptionComponent, PasswordInputComponent, PasswordStrengthIndicatorComponent]
 })
 export class AppComponent {
-  password: string = "";
   title = 'pass-task';
 }

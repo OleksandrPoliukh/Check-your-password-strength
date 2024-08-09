@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { CheckPassStrengthService } from '../../services/check-pass-strength.service';
 
@@ -10,12 +10,13 @@ import { CheckPassStrengthService } from '../../services/check-pass-strength.ser
   styleUrls: ['./password-strength-indicator.component.css']
 })
 export class PasswordStrengthIndicatorComponent {
-  @Input() password: string = '';
+
   strengthClass: string[] = ["gray", "gray", "gray"];
 
-  constructor(private checkPassStrengthService: CheckPassStrengthService) {}
-
-  ngOnChanges() {
-    this.strengthClass = this.checkPassStrengthService.checkPassStrength(this.password);
+  constructor(private checkPassStrengthService: CheckPassStrengthService) {
+    this.checkPassStrengthService.strengthClass$.subscribe(strengthClass => {
+      this.strengthClass = strengthClass;
+    })
   }
+
 }
